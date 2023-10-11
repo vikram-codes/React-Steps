@@ -1,17 +1,23 @@
-// import { useState } from "react";
+import { useState } from "react";
 
-const messages = ["Learn React", "Apply for Jobs", "Invest your new Income"];
+const messages = ["Click Next", "Click Next/Previous", "Click Previous"];
 import "./App.css";
 
 function App() {
-  const step = 3;
+  let [step, setStep] = useState(1);
 
   const stepIncrease = function () {
-    step += 1;
+    if (step <= 2) {
+      step += 1;
+      setStep(step);
+    }
   };
 
   const stepDecrease = function () {
-    step -= 1;
+    if (step >= 2) {
+      step -= 1;
+      setStep(step);
+    }
   };
 
   return (
@@ -26,10 +32,16 @@ function App() {
         Step {step}: {messages[step - 1]}
       </p>
       <div className="buttons">
-        <button style={{ backgroundColor: "#7950f2", color: "#fff" }}>
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+          onClick={stepDecrease}
+        >
           Previous
         </button>
-        <button style={{ backgroundColor: "#7950f2", color: "#fff" }}>
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+          onClick={stepIncrease}
+        >
           Next
         </button>
       </div>
