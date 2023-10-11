@@ -12,27 +12,22 @@ function App() {
 
   const stepIncrease = function () {
     if (step <= 2) {
-      step += 1;
-      setStep(step);
+      setStep((s) => s + 1);
     }
   };
 
   const stepDecrease = function () {
     if (step >= 2) {
-      step -= 1;
-      setStep(step);
+      setStep((s) => s - 1);
     }
   };
 
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
       {isOpen && (
-        // <button>&times;</button>
-        // #a020f0
-
         <div className="steps">
           <div className="numbers">
             <div className={`${step >= 1 ? "active" : ""}`}>1</div>
